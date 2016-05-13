@@ -18,8 +18,12 @@ function genContext(){
 }
 
 app.get('/display-info',function(req,res){
+  var qParams = [];
+  for(var p in req.query){
+    qParams.push({'name':p, 'value':req.query[p]})
+  }
   var context = {};
-  context.sentData = req.query.myData;
+  context.sentData = qParams;
   res.render('display-info', context);
 });
 

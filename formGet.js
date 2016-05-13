@@ -17,6 +17,12 @@ function genContext(){
   return output;
 }
 
+app.get('/display-info',function(req,res){
+  var context = {};
+  context.sentData = req.query.myData;
+  res.render('display-info', context);
+});
+
 app.get('/random',function(req,res){
   res.render('random', genContext());
 });
